@@ -1,0 +1,33 @@
+{
+    "name": "jasonc/api",
+    "description": "",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "C.Jason",
+            "email": "chenjxlg@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "laravel/framework": "*",
+        "tymon/jwt-auth": "1.*@rc"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jason\\Api\\": "src/"
+        },
+        "files": [
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jason\\Api\\ApiServiceProvider"
+            ],
+            "aliases": {
+                "Api": "Jason\\Api\\Facades\\Api"
+            }
+        }
+    }
+}

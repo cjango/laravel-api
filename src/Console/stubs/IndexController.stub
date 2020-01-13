@@ -1,0 +1,12 @@
+<?php
+
+namespace DummyNamespace;
+
+class IndexController extends Controller
+{
+
+    public function index()
+    {
+        return $this->success('Json Api is ready');
+    }
+}
