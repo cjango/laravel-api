@@ -26,10 +26,9 @@ class ApiServiceProvider extends ServiceProvider
     ];
 
     /**
-     * 部署
-     * @Author:<C.Jason>
-     * @Date:2019-07-30T08:59:16+0800
-     * @return void
+     * Notes: 部署
+     * @Author: <C.Jason>
+     * @Date: 2020/1/14 5:21 下午
      */
     public function boot()
     {
@@ -47,25 +46,24 @@ class ApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * 注册功能
-     * @Author:<C.Jason>
-     * @Date:2019-07-30T08:59:28+0800
-     * @return void
+     * Notes: 注册功能
+     * @Author: <C.Jason>
+     * @Date: 2020/1/14 5:21 下午
      */
     public function register()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/api.php', 'api');
 
+        config(['auth.guards.api' => config('api.guard')]);
         $this->commands($this->commands);
 
         $this->registerRouteMiddlewares();
     }
 
     /**
-     * 注册路由中间件
-     * @Author:<C.Jason>
-     * @Date:2019-07-30T08:59:40+0800
-     * @return void
+     * Notes: 注册路由中间件
+     * @Author: <C.Jason>
+     * @Date: 2020/1/14 5:21 下午
      */
     public function registerRouteMiddlewares()
     {
@@ -75,10 +73,10 @@ class ApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * 获取路由文件
-     * @Author:<C.Jason>
-     * @Date:2019-07-29T14:59:53+0800
-     * @return string 路由文件地址
+     * Notes: 获取路由文件
+     * @Author: <C.Jason>
+     * @Date: 2020/1/14 5:21 下午
+     * @return string
      */
     protected function getRouteFile()
     {
@@ -86,13 +84,14 @@ class ApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * 加载部署文件
-     * @Author:<C.Jason>
-     * @Date:2019-07-29T16:41:23+0800
-     * @return string 部署文件地址
+     * Notes: 加载部署文件
+     * @Author: <C.Jason>
+     * @Date: 2020/1/14 5:21 下午
+     * @return string
      */
     protected function getBootstrapFile()
     {
         return ucfirst(config('api.directory')) . DIRECTORY_SEPARATOR . 'bootstrap.php';
     }
+
 }

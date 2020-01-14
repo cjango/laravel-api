@@ -1,13 +1,20 @@
 <?php
 
 return [
-    'route'     => [
 
-        'domain'     => env('API_ROUTE_DOMAIN', ''),
+    'guard' => [
+        'driver'   => 'jwt',
+        'provider' => 'users',
+        'hash'     => false,
+    ],
 
-        'prefix'     => env('API_ROUTE_PREFIX', 'api'),
+    'route' => [
 
-        'namespace'  => 'App\\Api\\Controllers',
+        'domain' => env('API_ROUTE_DOMAIN', ''),
+
+        'prefix' => env('API_ROUTE_PREFIX', 'api'),
+
+        'namespace' => 'App\\Api\\Controllers',
 
         'middleware' => ['web', 'api'],
     ],
