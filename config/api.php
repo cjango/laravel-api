@@ -16,7 +16,7 @@ return [
 
         'namespace' => 'App\\Api\\Controllers',
 
-        'middleware' => ['web', 'api'],
+        'middleware' => ['api'],
     ],
 
     'directory' => app_path('Api'),
