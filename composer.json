@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jason\\Api\\": "src/"
+            "Jason\\": "src/"
         },
         "files": [
         ]
@@ -26,7 +26,7 @@
                 "Jason\\Api\\ApiServiceProvider"
             ],
             "aliases": {
-                "Api": "Jason\\Api\\Facades\\Api"
+                "Api": "Jason\\Api"
             }
         }
     }
