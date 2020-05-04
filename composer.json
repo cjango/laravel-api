@@ -11,7 +11,7 @@
     "require": {
         "php": ">=7.1.3",
         "laravel/framework": "*",
-        "tymon/jwt-auth": "1.*@rc"
+        "tymon/jwt-auth": "^1.0"
     },
     "autoload": {
         "psr-4": {
