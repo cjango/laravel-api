@@ -2,38 +2,20 @@
 
 namespace Jason\Api\Exception;
 
-use Exception;
+use Throwable;
 use Response;
 
 class Handler
 {
 
-    public function render($request, Exception $exception)
+    public static function render($request, Throwable $exception)
     {
         return Response::json([
             'status'      => 'EXCEPTION',
-            'status_code' => $this->tryGetStatusCode($exception),
-            'message'     => $this->tryGetErrorMessage($exception),
-            'exception'   => get_class($exception),
+            'status_code' => $exception->getCode(),
+            'message'     => $exception->getMessage(),
+            'exception'   => $exception->getFile(),
             'api_uri'     => $request->url(),
         ]);
-    }
-
-    protected function tryGetErrorMessage(Exception $exception)
-    {
-        if (method_exists($exception, 'errors')) {
-            return $exception->errors();
-        } else {
-            return $exception->getMessage();
-        }
-    }
-
-    protected function tryGetStatusCode(Exception $exception)
-    {
-        if (method_exists($exception, 'getStatusCode')) {
-            return $exception->getStatusCode();
-        } else {
-            return $exception->getCode();
-        }
     }
 }
