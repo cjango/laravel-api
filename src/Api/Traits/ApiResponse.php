@@ -9,30 +9,19 @@ trait ApiResponse
 {
 
     /**
-     * [$statusCode description]
-     * @var [type]
+     * 状态码
+     * @var int
      */
     protected $statusCode = FoundationResponse::HTTP_OK;
 
     /**
-     * Notes: 获取状态码
-     * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:16 下午
-     * @return int
-     */
-    protected function getStatusCode()
-    {
-        return $this->statusCode;
-    }
-
-    /**
      * Notes: 设置状态码
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:16 下午
-     * @param $statusCode
+     * @Date  : 2020/1/14 5:16 下午
+     * @param int $statusCode
      * @return $this
      */
-    protected function setStatusCode($statusCode)
+    protected function setStatusCode(int $statusCode)
     {
         $this->statusCode = $statusCode;
 
@@ -42,12 +31,12 @@ trait ApiResponse
     /**
      * Notes: 成功的返回
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:16 下午
-     * @param $data
+     * @Date  : 2020/1/14 5:16 下午
+     * @param mixed  $data
      * @param string $status
      * @return mixed
      */
-    public function success($data, $status = "SUCCESS")
+    public function success($data, string $status = "SUCCESS")
     {
         return $this->status($status, compact('data'));
     }
@@ -55,12 +44,12 @@ trait ApiResponse
     /**
      * Notes: 返回消息
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:16 下午
-     * @param $message
+     * @Date  : 2020/1/14 5:16 下午
+     * @param string $message
      * @param string $status
      * @return mixed
      */
-    public function message($message, $status = "SUCCESS")
+    public function message(string $message = '', string $status = "SUCCESS")
     {
         return $this->status($status, [
             'message' => $message,
@@ -70,13 +59,13 @@ trait ApiResponse
     /**
      * Notes: 失败
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:16 下午
-     * @param $message
-     * @param int $code
+     * @Date  : 2020/1/14 5:16 下午
+     * @param string $message
+     * @param int    $code
      * @param string $status
      * @return mixed
      */
-    public function failed($message, $code = FoundationResponse::HTTP_BAD_REQUEST, $status = 'ERROR')
+    public function failed(string $message, int $code = FoundationResponse::HTTP_BAD_REQUEST, string $status = 'ERROR')
     {
         return $this->setStatusCode($code)->message($message, $status);
     }
@@ -84,13 +73,13 @@ trait ApiResponse
     /**
      * Notes:
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:17 下午
-     * @param $status
-     * @param array $data
-     * @param null $code
+     * @Date  : 2020/1/14 5:17 下午
+     * @param string $status
+     * @param array  $data
+     * @param null   $code
      * @return mixed
      */
-    protected function status($status, array $data, $code = null)
+    protected function status(string $status, array $data, int $code = null)
     {
         if ($code) {
             $this->setStatusCode($code);
@@ -109,12 +98,12 @@ trait ApiResponse
     /**
      * Notes: 结果返回
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:17 下午
-     * @param $data
+     * @Date  : 2020/1/14 5:17 下午
+     * @param mixed $data
      * @param array $header
      * @return mixed
      */
-    protected function respond($data, $header = [])
+    protected function respond($data, array $header = [])
     {
         return Response::json($data, 200, $header);
     }
