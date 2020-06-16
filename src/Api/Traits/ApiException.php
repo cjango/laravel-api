@@ -12,7 +12,7 @@ trait ApiException
     {
         return new JsonResponse([
             'status'      => 'EXCEPTION',
-            'status_code' => $e->getCode(),
+            'status_code' => $e->getStatusCode(),
             'message'     => $e->getMessage(),
             'exception'   => get_class($e),
             'api_uri'     => $request->url(),
