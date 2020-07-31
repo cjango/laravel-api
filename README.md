@@ -1,5 +1,5 @@
 # LaravelAPI
-
+>快速构建laravel api服务
 ## 1.安装
 ```shell script
 $ composer require jasonc/api
