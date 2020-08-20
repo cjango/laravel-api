@@ -36,7 +36,7 @@ class TokenAuthRefresh extends BaseMiddleware
         } catch (TokenExpiredException $exception) {
             try {
                 $token = $this->auth->refresh();
-                $once  = Auth::guard(Api::GUARD)->onceUsingId(
+                Auth::guard(Api::GUARD)->onceUsingId(
                     $this->auth
                         ->manager()
                         ->getPayloadFactory()

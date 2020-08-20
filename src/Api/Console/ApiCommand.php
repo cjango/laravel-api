@@ -9,7 +9,7 @@ class ApiCommand extends Command
 
     protected $signature = 'api:install';
 
-    protected $description = 'Install the api package';
+    protected $description = 'Install the API package';
 
     protected $directory = '';
 
@@ -58,8 +58,8 @@ class ApiCommand extends Command
     /**
      * 创建基础控制器
      * @Author:<C.Jason>
-     * @Date:2019-07-29T16:18:22+0800
-     * @return [type] [description]
+     * @Date  :2019-07-29T16:18:22+0800
+     * @return void
      */
     protected function createBaseController()
     {

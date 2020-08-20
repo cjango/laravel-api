@@ -74,9 +74,9 @@ trait ApiResponse
      * Notes:
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:17 下午
-     * @param string $status
-     * @param array  $data
-     * @param null   $code
+     * @param string   $status
+     * @param array    $data
+     * @param int|null $code
      * @return mixed
      */
     protected function status(string $status, array $data, int $code = null)
