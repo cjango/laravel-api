@@ -10,13 +10,20 @@ trait ApiException
 
     protected function prepareJsonResponse($request, Throwable $e)
     {
-        return new JsonResponse([
+        $message = [
             'status'      => 'EXCEPTION',
             'status_code' => $this->getErrorCode($e),
             'message'     => $e->getMessage(),
-            'exception'   => get_class($e),
-            'api_uri'     => $request->url(),
-        ]);
+        ];
+
+        if (config('app.debug')) {
+            $message = array_merge($message, [
+                'exception' => get_class($e),
+                'api_uri'   => $request->url(),
+            ]);
+        }
+
+        return new JsonResponse($message);
     }
 
     /**
