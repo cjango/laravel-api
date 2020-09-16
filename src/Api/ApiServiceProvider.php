@@ -22,13 +22,14 @@ class ApiServiceProvider extends ServiceProvider
      */
     protected $routeMiddleware = [
         'token.auth'   => Middleware\TokenAuthRefresh::class,
+        'token.guess'  => Middleware\TokenGuess::class,
         'client.check' => Middleware\ClientCheck::class,
     ];
 
     /**
      * Notes: 部署
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:21 下午
+     * @Date  : 2020/1/14 5:21 下午
      */
     public function boot()
     {
@@ -48,7 +49,7 @@ class ApiServiceProvider extends ServiceProvider
     /**
      * Notes: 注册功能
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:21 下午
+     * @Date  : 2020/1/14 5:21 下午
      */
     public function register()
     {
@@ -63,7 +64,7 @@ class ApiServiceProvider extends ServiceProvider
     /**
      * Notes: 注册路由中间件
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:21 下午
+     * @Date  : 2020/1/14 5:21 下午
      */
     public function registerRouteMiddlewares()
     {
@@ -75,7 +76,7 @@ class ApiServiceProvider extends ServiceProvider
     /**
      * Notes: 获取路由文件
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:21 下午
+     * @Date  : 2020/1/14 5:21 下午
      * @return string
      */
     protected function getRouteFile()
@@ -86,7 +87,7 @@ class ApiServiceProvider extends ServiceProvider
     /**
      * Notes: 加载部署文件
      * @Author: <C.Jason>
-     * @Date: 2020/1/14 5:21 下午
+     * @Date  : 2020/1/14 5:21 下午
      * @return string
      */
     protected function getBootstrapFile()

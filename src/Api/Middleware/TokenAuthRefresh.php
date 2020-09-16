@@ -24,7 +24,7 @@ class TokenAuthRefresh extends BaseMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $res = $this->checkForToken($request);
+        $this->checkForToken($request);
 
         try {
             if ($this->auth->parseToken()->authenticate()) {

@@ -31,6 +31,10 @@ return [
          * 身份认证的中间件
          */
         'middleware_auth' => ['api', 'token.auth'],
+        /**
+         * 获取token，获取不到也不报错的中间件
+         */
+        'middleware_guess' => ['api', 'token.guess'],
     ],
 
     /**
