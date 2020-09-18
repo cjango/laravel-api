@@ -10,7 +10,10 @@ class TokenGuess extends BaseMiddleware
 
     public function handle($request, Closure $next)
     {
-        $this->checkForToken($request);
+        try {
+            $this->checkForToken($request);
+        } catch (\Exception $exception) {
+        }
 
         return $next($request);
     }
