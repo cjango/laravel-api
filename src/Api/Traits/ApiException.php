@@ -24,7 +24,7 @@ trait ApiException
             'status_code' => 422,
             'message'     => $exception->getMessage(),
             'errors'      => $exception->errors(),
-        ], $exception->status);
+        ]);
     }
 
     /**
