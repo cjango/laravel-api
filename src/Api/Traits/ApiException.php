@@ -3,11 +3,38 @@
 namespace Jason\Api\Traits;
 
 use Illuminate\Http\JsonResponse;
+use Illuminate\Validation\ValidationException;
 use Throwable;
 
 trait ApiException
 {
 
+    /**
+     * Notes: 表单验证错误信息
+     * @Author: <C.Jason>
+     * @Date  : 2020/11/10 11:21 上午
+     * @param                                            $request
+     * @param \Illuminate\Validation\ValidationException $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function invalidJson($request, ValidationException $exception)
+    {
+        return response()->json([
+            'status'      => 'ERROR',
+            'status_code' => 422,
+            'message'     => $exception->getMessage(),
+            'errors'      => $exception->errors(),
+        ], $exception->status);
+    }
+
+    /**
+     * Notes: 统一错误信息格式
+     * @Author: <C.Jason>
+     * @Date  : 2020/11/10 11:21 上午
+     * @param            $request
+     * @param \Throwable $e
+     * @return \Illuminate\Http\JsonResponse
+     */
     protected function prepareJsonResponse($request, Throwable $e)
     {
         $message = [

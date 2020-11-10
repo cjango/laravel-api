@@ -36,7 +36,7 @@ trait ApiResponse
      * @param string $status
      * @return mixed
      */
-    public function success($data, string $status = "SUCCESS")
+    public function success($data = [], string $status = "SUCCESS")
     {
         return $this->status($status, compact('data'));
     }
@@ -65,7 +65,7 @@ trait ApiResponse
      * @param string $status
      * @return mixed
      */
-    public function failed(string $message, int $code = FoundationResponse::HTTP_BAD_REQUEST, string $status = 'ERROR')
+    public function failed(string $message = '', int $code = FoundationResponse::HTTP_BAD_REQUEST, string $status = 'ERROR')
     {
         return $this->setStatusCode($code)->message($message, $status);
     }
