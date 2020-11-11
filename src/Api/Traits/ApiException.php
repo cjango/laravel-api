@@ -22,8 +22,7 @@ trait ApiException
         return response()->json([
             'status'      => 'ERROR',
             'status_code' => 422,
-            'message'     => $exception->getMessage(),
-            'errors'      => $exception->errors(),
+            'message'     => $exception->errors()->first(),
         ]);
     }
 
