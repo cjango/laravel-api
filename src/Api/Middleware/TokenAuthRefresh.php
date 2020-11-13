@@ -17,8 +17,8 @@ class TokenAuthRefresh extends BaseMiddleware
      * Notes: token 认证中间件，实现了token的自动刷新续期
      * @Author: <C.Jason>
      * @Date  : 2020/6/19 10:36 上午
-     * @param          $request
-     * @param \Closure $next
+     * @param            $request
+     * @param  \Closure  $next
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response|mixed
      * @throws \Tymon\JWTAuth\Exceptions\JWTException
      */
@@ -30,8 +30,6 @@ class TokenAuthRefresh extends BaseMiddleware
             if ($this->auth->parseToken()->authenticate()) {
                 return $next($request);
             }
-            throw new UnauthorizedHttpException('jwt-auth', '未登录');
-        } catch (TokenBlacklistedException $exception) {
             throw new UnauthorizedHttpException('jwt-auth', '未登录');
         } catch (TokenExpiredException $exception) {
             try {
@@ -46,6 +44,8 @@ class TokenAuthRefresh extends BaseMiddleware
             } catch (JWTException $exception) {
                 throw new UnauthorizedHttpException('jwt-auth', $exception->getMessage());
             }
+        } catch (\Exception $exception) {
+            throw new UnauthorizedHttpException('jwt-auth', '未登录');
         }
 
         return $this->setAuthenticationHeader($next($request), $token);
