@@ -3,6 +3,7 @@
 namespace Jason\Api;
 
 use Illuminate\Support\Facades\Auth;
+use Jason\Api\Events\ApiLogin;
 
 class Api
 {
@@ -56,6 +57,7 @@ class Api
      */
     public function login($user)
     {
+        event(new ApiLogin($user));
         return Auth::guard(self::GUARD)->login($user);
     }
 
