@@ -12,29 +12,33 @@ return [
 
     'route'     => [
         /**
-         * 可配置接口独立域名
+         * API 路由命名前缀
          */
-        'domain'          => env('API_ROUTE_DOMAIN', ''),
+        'as'               => 'api.',
         /**
-         * 不实用独立域名，接口地址前缀
+         * 可配置 API 独立域名
          */
-        'prefix'          => env('API_ROUTE_PREFIX', 'api'),
+        'domain'           => env('API_ROUTE_DOMAIN', ''),
         /**
-         * 接口控制器命名空间
+         * 不使用用独立域名，API 地址前缀
          */
-        'namespace'       => 'App\\Api\\Controllers',
+        'prefix'           => env('API_ROUTE_PREFIX', 'api'),
+        /**
+         * API 控制器命名空间
+         */
+        'namespace'        => 'App\\Api\\Controllers',
         /**
          * 中间件
          */
-        'middleware'      => ['api'],
+        'middleware'       => ['api', 'api.accept'],
         /**
          * 身份认证的中间件
          */
-        'middleware_auth' => ['api', 'token.auth'],
+        'middleware_auth'  => ['api', 'api.accept', 'token.auth'],
         /**
          * 获取token，获取不到也不报错的中间件
          */
-        'middleware_guess' => ['api', 'token.guess'],
+        'middleware_guess' => ['api', 'api.accept', 'token.guess'],
     ],
 
     /**

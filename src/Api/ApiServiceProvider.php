@@ -21,6 +21,7 @@ class ApiServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
+        'api.accept'   => Middleware\AcceptHeader::class,
         'token.auth'   => Middleware\TokenAuthRefresh::class,
         'token.guess'  => Middleware\TokenGuess::class,
         'client.check' => Middleware\ClientCheck::class,
@@ -42,7 +43,12 @@ class ApiServiceProvider extends ServiceProvider
         }
 
         if (file_exists($routes = $this->getRouteFile())) {
-            $this->loadRoutesFrom($routes);
+            Route::as(config('api.route.as'))
+                 ->domain(config('api.route.domain'))
+                 ->middleware(config('api.route.middleware'))
+                 ->namespace(config('api.route.namespace'))
+                 ->prefix(config('api.route.prefix'))
+                 ->group($routes);
         }
     }
 
