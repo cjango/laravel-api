@@ -18,17 +18,17 @@ class TokenGuess extends BaseMiddleware
             $this->checkForToken($request);
             $this->auth->parseToken()->authenticate();
         } catch (TokenExpiredException $exception) {
-            $token = $this->auth->refresh();
-            Auth::guard(Api::GUARD)->onceUsingId(
-                $this->auth
-                    ->manager()
-                    ->getPayloadFactory()
-                    ->buildClaimsCollection()
-                    ->toPlainArray()['sub']
-            );
-
-            return $this->setAuthenticationHeader($next($request), $token);
-        } catch (Exception $exception) {
+//            $token = $this->auth->refresh();
+//            Auth::guard(Api::GUARD)->onceUsingId(
+//                $this->auth
+//                    ->manager()
+//                    ->getPayloadFactory()
+//                    ->buildClaimsCollection()
+//                    ->toPlainArray()['sub']
+//            );
+//
+//            return $this->setAuthenticationHeader($next($request), $token);
+//        } catch (Exception $exception) {
             return $next($request);
         }
 
