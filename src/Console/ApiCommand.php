@@ -7,11 +7,11 @@ use Illuminate\Console\Command;
 class ApiCommand extends Command
 {
 
-    protected $signature = 'api:install';
+    protected        $signature   = 'api:install';
 
-    protected $description = 'Install the API package';
+    protected        $description = 'Install the API package';
 
-    protected $directory = '';
+    protected string $directory   = '';
 
     public function handle()
     {
@@ -32,6 +32,7 @@ class ApiCommand extends Command
 
         if (is_dir($this->directory)) {
             $this->line("<error>{$this->directory} directory already exists !</error> ");
+
             return;
         }
 
@@ -50,16 +51,12 @@ class ApiCommand extends Command
         $this->createBootstrapFile();
 
         $this->createRoutesFile();
-
-        $this->publishJWTconfig();
-
     }
 
     /**
-     * 创建基础控制器
-     * @Author:<C.Jason>
-     * @Date  :2019-07-29T16:18:22+0800
-     * @return void
+     * Notes   : 创建基础控制器
+     * @Date   : 2021/8/25 4:37 下午
+     * @Author : <Jason.C>
      */
     protected function createBaseController()
     {
@@ -74,10 +71,9 @@ class ApiCommand extends Command
     }
 
     /**
-     * 创建默认控制器
-     * @Author:<C.Jason>
-     * @Date:2019-07-29T16:18:49+0800
-     * @return void
+     * Notes   : 创建默认控制器
+     * @Date   : 2021/8/25 4:37 下午
+     * @Author : <Jason.C>
      */
     protected function createIndexController()
     {
@@ -92,10 +88,9 @@ class ApiCommand extends Command
     }
 
     /**
-     * 创建部署文件
-     * @Author:<C.Jason>
-     * @Date:2019-07-29T16:19:06+0800
-     * @return void
+     * Notes   : 创建部署文件
+     * @Date   : 2021/8/25 4:37 下午
+     * @Author : <Jason.C>
      */
     protected function createBootstrapFile()
     {
@@ -107,10 +102,9 @@ class ApiCommand extends Command
     }
 
     /**
-     * 创建路由文件
-     * @Author:<C.Jason>
-     * @Date:2019-07-29T16:19:24+0800
-     * @return void
+     * Notes   : 创建路由文件
+     * @Date   : 2021/8/25 4:37 下午
+     * @Author : <Jason.C>
      */
     protected function createRoutesFile()
     {
@@ -122,36 +116,26 @@ class ApiCommand extends Command
     }
 
     /**
-     * 发布JWT的配置文件
-     * @Author:<C.Jason>
-     * @Date:2019-07-29T16:17:58+0800
-     * @return void
-     */
-    protected function publishJWTconfig()
-    {
-        $this->call('vendor:publish', [
-            '--provider' => 'Tymon\JWTAuth\Providers\LaravelServiceProvider',
-        ]);
-
-        $this->call('jwt:secret');
-    }
-
-    /**
-     * Get stub contents.
+     * Notes   : 获取模板内容
+     * @Date   : 2021/8/25 4:37 下午
+     * @Author : <Jason.C>
      * @param $name
      * @return string
      */
-    protected function getStub($name)
+    protected function getStub($name): string
     {
         return $this->laravel['files']->get(__DIR__ . "/stubs/$name.stub");
     }
 
     /**
-     * Make new directory.
-     * @param string $path
+     * Notes   : 创建文件夹
+     * @Date   : 2021/8/25 4:37 下午
+     * @Author : <Jason.C>
+     * @param  string  $path
      */
-    protected function makeDir($path = '')
+    protected function makeDir(string $path = '')
     {
         $this->laravel['files']->makeDirectory("{$this->directory}/$path", 0755, true, true);
     }
+
 }

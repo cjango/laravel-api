@@ -9,9 +9,9 @@ class AcceptHeader
 {
 
     /**
-     * Notes   :
+     * Notes   : 设置默认头信息
      * @Date   : 2021/6/9 9:30 上午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @param  Request  $request
      * @param  Closure  $next
      * @return mixed

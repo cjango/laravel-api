@@ -9,13 +9,13 @@
         }
     ],
     "require": {
-        "php": ">=7.1.3",
-        "laravel/framework": "*",
-        "tymon/jwt-auth": "^1.0"
+        "php": ">=7.4.0",
+        "laravel/passport": "^10.1",
+        "overtrue/laravel-passport-cache-token": "^2.2"
     },
     "autoload": {
         "psr-4": {
-            "Jason\\": "src/"
+            "Jason\\Api\\": "src/"
         },
         "files": [
         ]

@@ -1,22 +1,23 @@
 <?php
 
-namespace Jason;
+namespace Jason\Api;
 
 use Illuminate\Support\Facades\Facade;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Class Api
  * @package Jason
- * @method static \Jason\Api\Api attempt(array $credentials)
- * @method static \Jason\Api\Api login(JWTSubject $user)
- * @method static \Jason\Api\Api id()
- * @method static \Jason\Api\Api user()
+ * @method static \Jason\Api\Factory userId()
+ * @method static \Jason\Api\Factory user()
+ * @method static \Jason\Api\Factory check()
+ * @method static \Jason\Api\Factory guest()
  */
 class Api extends Facade
 {
-    protected static function getFacadeAccessor()
+
+    protected static function getFacadeAccessor(): string
     {
-        return Api\Api::class;
+        return 'rest';
     }
+
 }
