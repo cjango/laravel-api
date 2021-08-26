@@ -24,6 +24,8 @@ class ApiCommand extends Command
         $this->call('vendor:publish', [
             '--provider' => 'Jason\Api\ApiServiceProvider',
         ]);
+
+        $this->call('migrate');
     }
 
     protected function initDirectory()
