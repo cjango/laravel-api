@@ -20,6 +20,7 @@ class Factory
      * @Date   : 2021/8/26 11:26 上午
      * @Author : <Jason.C>
      * @param  array  $credentials
+     * @param  array  $scopes
      * @return string
      * @throws \Exception
      */
@@ -28,7 +29,7 @@ class Factory
         if ($this->app['auth']->attempt($credentials)) {
             $tokenName = $this->app['config']->get('api.passport_token_name');
 
-            return $this->app['auth']->user()->createToken($tokenName, $scopes)->accessToken;
+            return $this->app['auth']->user()->createToken($tokenName, $scopes)->plainTextToken;
         } else {
             throw new \Exception('Authorize failed, wrong credentials');
         }
@@ -47,13 +48,13 @@ class Factory
         $this->app['auth']->login($user);
         $tokenName = $this->app['config']->get('api.passport_token_name');
 
-        return $this->app['auth']->user()->createToken($tokenName, $scopes)->accessToken;
+        return $this->app['auth']->user()->createToken($tokenName, $scopes)->plainTextToken;
     }
 
     /**
      * Notes   : 当前登录用户
      * @Date   : 2021/7/21 5:30 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return User
      */
     public function user(): User
@@ -64,7 +65,7 @@ class Factory
     /**
      * Notes   : 当前登录用户ID
      * @Date   : 2021/7/21 5:31 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return int
      */
     public function userId(): int
@@ -75,7 +76,7 @@ class Factory
     /**
      * Notes   : 检测用户是否已登录
      * @Date   : 2021/8/9 4:01 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return bool
      */
     public function check(): bool
@@ -86,7 +87,7 @@ class Factory
     /**
      * Notes   : 检测是否游客登录
      * @Date   : 2021/8/9 4:02 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return bool
      */
     public function guest(): bool

@@ -10,8 +10,8 @@
     ],
     "require": {
         "php": ">=7.4.0",
-        "overtrue/laravel-passport-cache-token": "^2.2",
-        "laravel/passport": "^10.1"
+        "laravel/framework": "^8.56",
+        "laravel/sanctum": "^2.11"
     },
     "autoload": {
         "psr-4": {
