@@ -9,7 +9,7 @@ class UnauthorizedException extends Exception
 
     public function __construct()
     {
-        parent::__construct('Unauthenticated', 401);
+        parent::__construct('Unauthenticated.', 401);
     }
 
 }
