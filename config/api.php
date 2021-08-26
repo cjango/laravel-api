@@ -2,11 +2,6 @@
 
 return [
     /**
-     * 默认的看守
-     */
-    'guard'                         => env('REST_API_GUARD', 'passport'),
-
-    /**
      * 重新登录后，自动作废以前的token
      */
     'token_auto_revoke'             => env('TOKEN_AUTO_REVOKE', true),
@@ -36,7 +31,7 @@ return [
      * Passport Cache Config
      */
     'passport_cache'                => [
-        'enable'     => env('REST_PASSPORT_CACHE', true),
+        'enable'     => env('PASSPORT_CACHE', true),
         // Cache key prefix
         'prefix'     => 'passport_',
         // The lifetime of token cache,

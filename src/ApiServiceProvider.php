@@ -49,7 +49,10 @@ class ApiServiceProvider extends ServiceProvider
         }
 
         // 修改默认看守器的配置
-        $this->app['config']->set('auth.guards.api.driver', $this->app['config']->get('api.guard'));
+        $this->app['config']->set('auth.guards.api', [
+            'driver'   => 'passport',
+            'provider' => 'users',
+        ]);
         // Passport 的缓存配置
         if ($this->app['config']->get('api.passport_cache.enable')) {
             $this->app['config']->set('passport.cache', $this->app['config']->get('api.cache'));
