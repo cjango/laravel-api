@@ -2,11 +2,14 @@
 
 namespace DummyNamespace;
 
+use Illuminate\Http\JsonResponse;
+
 class IndexController extends Controller
 {
 
-    public function index()
+    public function index(): JsonResponse
     {
         return $this->success('Json Api is ready');
     }
+
 }
