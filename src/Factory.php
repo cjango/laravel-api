@@ -4,6 +4,7 @@ namespace Jason\Api;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\User;
+use Jason\Api\Events\Authenticated;
 
 class Factory
 {
@@ -29,6 +30,8 @@ class Factory
         if ($this->app['auth']->attempt($credentials)) {
             $tokenName = $this->app['config']->get('api.passport_token_name');
 
+            event(new Authenticated($this->app['auth']->user()));
+
             return $this->app['auth']->user()->createToken($tokenName, $scopes)->plainTextToken;
         } else {
             throw new \Exception('Authorize failed, wrong credentials');
@@ -41,12 +44,14 @@ class Factory
      * @Author : <Jason.C>
      * @param  \Illuminate\Foundation\Auth\User  $user
      * @param  array                             $scopes
-     * @return string
+     * @return mixed
      */
-    public function login(User $user, array $scopes = []): string
+    public function login(User $user, array $scopes = [])
     {
         $this->app['auth']->login($user);
         $tokenName = $this->app['config']->get('api.passport_token_name');
+
+        event(new Authenticated($this->app['auth']->user()));
 
         return $this->app['auth']->user()->createToken($tokenName, $scopes)->plainTextToken;
     }
@@ -55,7 +60,7 @@ class Factory
      * Notes   : 当前登录用户
      * @Date   : 2021/7/21 5:30 下午
      * @Author : <Jason.C>
-     * @return null|User
+     * @return User
      */
     public function user(): ?User
     {

@@ -5,6 +5,7 @@ namespace Jason\Api;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Jason\Api\Listeners\LoginListener;
 
 class ApiServiceProvider extends ServiceProvider
 {
@@ -44,6 +45,8 @@ class ApiServiceProvider extends ServiceProvider
             require $bootstrap;
         }
 
+        $this->registerTokenListeners();
+
         if (file_exists($routes = $this->getRouteFile())) {
             Route::as(config('api.route.as'))
                  ->domain(config('api.route.domain'))
@@ -52,6 +55,16 @@ class ApiServiceProvider extends ServiceProvider
                  ->prefix(config('api.route.prefix'))
                  ->group($routes);
         }
+    }
+
+    /**
+     * Notes   : 注册监听器
+     * @Date   : 2021/7/23 1:49 下午
+     * @Author : <Jason.C>
+     */
+    protected function registerTokenListeners(): void
+    {
+        $this->app['events']->listen('Jason\Api\Events\Authenticated', LoginListener::class);
     }
 
     /**
