@@ -43,7 +43,6 @@ class ApiServiceProvider extends ServiceProvider
         if (file_exists($bootstrap = $this->getBootstrapFile())) {
             require $bootstrap;
         }
-        $this->registerTokenListeners();
 
         if (file_exists($routes = $this->getRouteFile())) {
             Route::as(config('api.route.as'))
