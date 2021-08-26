@@ -25,7 +25,6 @@ class ApiCommand extends Command
             '--provider' => 'Jason\Api\ApiServiceProvider',
         ]);
         $this->call('migrate');
-        $this->call('passport:install');
     }
 
     protected function initDirectory()
