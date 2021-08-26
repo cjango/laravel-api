@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Jason\Api\Listeners\PruneOldTokens;
 use Jason\Api\Listeners\RevokeOldTokens;
+use Laravel\Passport\Http\Middleware\CheckForAnyScope;
+use Laravel\Passport\Http\Middleware\CheckScopes;
 use Laravel\Passport\Passport;
 
 class ApiServiceProvider extends ServiceProvider
@@ -26,6 +28,8 @@ class ApiServiceProvider extends ServiceProvider
      * @var array
      */
     protected array $routeMiddleware = [
+        'scopes'      => CheckScopes::class,
+        'scope'       => CheckForAnyScope::class,
         'api.accept'  => Middleware\AcceptHeader::class,
         'token.auth'  => Middleware\Authorized::class,
         'token.guess' => Middleware\Guess::class,
