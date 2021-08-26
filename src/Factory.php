@@ -44,9 +44,9 @@ class Factory
      * @Author : <Jason.C>
      * @param  \Illuminate\Foundation\Auth\User  $user
      * @param  array                             $scopes
-     * @return mixed
+     * @return string
      */
-    public function login(User $user, array $scopes = [])
+    public function login(User $user, array $scopes = []): string
     {
         $this->app['auth']->login($user);
         $tokenName = $this->app['config']->get('api.passport_token_name');
@@ -60,7 +60,7 @@ class Factory
      * Notes   : 当前登录用户
      * @Date   : 2021/7/21 5:30 下午
      * @Author : <Jason.C>
-     * @return User
+     * @return User|null
      */
     public function user(): ?User
     {
@@ -71,9 +71,9 @@ class Factory
      * Notes   : 当前登录用户ID
      * @Date   : 2021/7/21 5:31 下午
      * @Author : <Jason.C>
-     * @return int
+     * @return int|null
      */
-    public function userId(): int
+    public function userId(): ?int
     {
         return $this->app['auth']->id();
     }
