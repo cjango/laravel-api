@@ -2,7 +2,8 @@
 
 namespace Jason\Api\Traits;
 
-use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Response;
 use Symfony\Component\HttpFoundation\Response as FoundationResponse;
 
 trait ApiResponse
@@ -34,9 +35,9 @@ trait ApiResponse
      * @Date  : 2020/1/14 5:16 下午
      * @param  mixed   $data
      * @param  string  $status
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function success($data = [], string $status = "SUCCESS")
+    public function success($data = [], string $status = "SUCCESS"): JsonResponse
     {
         return $this->status($status, compact('data'));
     }
@@ -47,9 +48,9 @@ trait ApiResponse
      * @Date  : 2020/1/14 5:16 下午
      * @param  string  $message
      * @param  string  $status
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function message(string $message = '', string $status = "SUCCESS")
+    public function message(string $message = '', string $status = "SUCCESS"): JsonResponse
     {
         return $this->status($status, [
             'message' => $message,
@@ -80,9 +81,9 @@ trait ApiResponse
      * @param  string    $status
      * @param  array     $data
      * @param  int|null  $code
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function status(string $status, array $data, int $code = null)
+    protected function status(string $status, array $data, int $code = null): JsonResponse
     {
         if ($code) {
             $this->setStatusCode($code);
@@ -104,9 +105,9 @@ trait ApiResponse
      * @Date  : 2020/1/14 5:17 下午
      * @param  mixed  $data
      * @param  array  $header
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function respond($data, array $header = [])
+    protected function respond($data, array $header = []): JsonResponse
     {
         return Response::json($data, 200, $header);
     }
