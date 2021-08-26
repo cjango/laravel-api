@@ -1,5 +1,20 @@
 # LaravelAPI
->快速构建laravel api服务
+> 快速构建laravel api服务
+
+## 版本选择
+
+### 3.x
+
+使用 `tymon/jwt-auth` 作为验证
+
+### 4.x
+
+使用 `laravel/passport` 作为验证
+
+### 5.x
+
+使用 `laravel/sanctum` 作为验证
+
 ## 1.安装
 ```shell script
 $ composer require jasonc/api
