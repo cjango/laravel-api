@@ -17,6 +17,10 @@ return [
      * 个人TOKEN过期时间，单位 分钟
      */
     'personal_access_tokens_expire' => env('PERSONAL_ACCESS_TOKENS_EXPIRE', 0),
+    /**
+     * token的名称
+     */
+    'passport_token_name'           => env('PASSPORT_TOKEN_NAME', null),
 
     /**
      * 作用域的配置
