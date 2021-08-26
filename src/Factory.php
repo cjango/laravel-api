@@ -20,6 +20,7 @@ class Factory
      * @Date   : 2021/8/26 11:26 上午
      * @Author : <Jason.C>
      * @param  array  $credentials
+     * @param  array  $scopes
      * @return string
      * @throws \Exception
      */
@@ -40,9 +41,9 @@ class Factory
      * @Author : <Jason.C>
      * @param  \Illuminate\Foundation\Auth\User  $user
      * @param  array                             $scopes
-     * @return mixed
+     * @return string
      */
-    public function login(User $user, array $scopes = [])
+    public function login(User $user, array $scopes = []): string
     {
         $this->app['auth']->login($user);
         $tokenName = $this->app['config']->get('api.passport_token_name');
@@ -53,10 +54,10 @@ class Factory
     /**
      * Notes   : 当前登录用户
      * @Date   : 2021/7/21 5:30 下午
-     * @Author : < Jason.C >
-     * @return User
+     * @Author : <Jason.C>
+     * @return User|null
      */
-    public function user(): User
+    public function user(): ?User
     {
         return $this->app['auth']->user();
     }
@@ -64,7 +65,7 @@ class Factory
     /**
      * Notes   : 当前登录用户ID
      * @Date   : 2021/7/21 5:31 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return int
      */
     public function userId(): int
@@ -75,7 +76,7 @@ class Factory
     /**
      * Notes   : 检测用户是否已登录
      * @Date   : 2021/8/9 4:01 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return bool
      */
     public function check(): bool
@@ -86,7 +87,7 @@ class Factory
     /**
      * Notes   : 检测是否游客登录
      * @Date   : 2021/8/9 4:02 下午
-     * @Author : < Jason.C >
+     * @Author : <Jason.C>
      * @return bool
      */
     public function guest(): bool
