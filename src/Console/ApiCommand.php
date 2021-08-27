@@ -24,6 +24,9 @@ class ApiCommand extends Command
         $this->call('vendor:publish', [
             '--provider' => 'Jason\Api\ApiServiceProvider',
         ]);
+        $this->call('vendor:publish', [
+            '--provider' => 'YangJiSen\CacheUserProvider\ServiceProvider',
+        ]);
         $this->call('migrate');
     }
 
