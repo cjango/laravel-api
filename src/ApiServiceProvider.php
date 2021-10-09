@@ -68,7 +68,7 @@ class ApiServiceProvider extends ServiceProvider
 
         $this->registerRouteMiddlewares();
 
-        $this->app->singleton('api', fn(Application $app) => new Factory($app));
+        $this->app->singleton('api', fn (Application $app) => new Factory($app));
     }
 
     /**

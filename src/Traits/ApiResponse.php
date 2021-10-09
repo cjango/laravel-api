@@ -21,8 +21,7 @@ trait ApiResponse
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:16 下午
      *
-     * @param int $statusCode
-     *
+     * @param  int  $statusCode
      * @return \Jason\Api\Traits\ApiResponse
      */
     protected function setStatusCode(int $statusCode): self
@@ -38,9 +37,8 @@ trait ApiResponse
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:16 下午
      *
-     * @param mixed  $data
-     * @param string $status
-     *
+     * @param  mixed  $data
+     * @param  string  $status
      * @return \Illuminate\Http\JsonResponse
      */
     public function success($data = [], string $status = 'SUCCESS'): JsonResponse
@@ -54,9 +52,8 @@ trait ApiResponse
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:16 下午
      *
-     * @param string $message
-     * @param string $status
-     *
+     * @param  string  $message
+     * @param  string  $status
      * @return \Illuminate\Http\JsonResponse
      */
     public function message(string $message = '', string $status = 'SUCCESS'): JsonResponse
@@ -72,10 +69,9 @@ trait ApiResponse
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:16 下午
      *
-     * @param string $message
-     * @param int    $code
-     * @param string $status
-     *
+     * @param  string  $message
+     * @param  int  $code
+     * @param  string  $status
      * @return mixed
      */
     public function failed(
@@ -92,10 +88,9 @@ trait ApiResponse
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:17 下午
      *
-     * @param string   $status
-     * @param array    $data
-     * @param int|null $code
-     *
+     * @param  string  $status
+     * @param  array  $data
+     * @param  int|null  $code
      * @return \Illuminate\Http\JsonResponse
      */
     protected function status(string $status, array $data, int $code = null): JsonResponse
@@ -120,9 +115,8 @@ trait ApiResponse
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:17 下午
      *
-     * @param mixed $data
-     * @param array $header
-     *
+     * @param  mixed  $data
+     * @param  array  $header
      * @return \Illuminate\Http\JsonResponse
      */
     protected function respond($data, array $header = []): JsonResponse
