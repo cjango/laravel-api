@@ -23,8 +23,8 @@ class Factory
      *
      * @param  array  $credentials
      * @param  array  $scopes
-     *
      * @return string
+     *
      * @throws Exception
      */
     public function attempt(array $credentials, array $scopes = []): string
@@ -46,7 +46,6 @@ class Factory
      *
      * @param  User  $user
      * @param  array  $scopes
-     *
      * @return string
      */
     public function login(User $user, array $scopes = []): string

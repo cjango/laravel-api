@@ -126,7 +126,6 @@ class ApiCommand extends Command
      * @Author : <Jason.C>
      *
      * @param $name
-     *
      * @return string
      */
     protected function getStub($name): string

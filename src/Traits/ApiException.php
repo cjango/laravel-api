@@ -16,7 +16,6 @@ trait ApiException
      *
      * @param  $request
      * @param  ValidationException  $exception
-     *
      * @return JsonResponse
      */
     protected function invalidJson($request, ValidationException $exception): JsonResponse
@@ -35,9 +34,8 @@ trait ApiException
      * @Author: <C.Jason>
      * @Date  : 2020/11/10 11:21 上午
      *
-     * @param            $request
+     * @param  $request
      * @param  Throwable  $e
-     *
      * @return JsonResponse
      */
     protected function prepareJsonResponse($request, Throwable $e): JsonResponse
@@ -65,7 +63,6 @@ trait ApiException
      * @Date  : 2020/6/17 2:11 下午
      *
      * @param  Throwable  $e
-     *
      * @return int
      */
     protected function getErrorCode(Throwable $e): int
