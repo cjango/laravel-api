@@ -1,5 +1,14 @@
 # LaravelAPI
+
+![StyleCi](https://github.styleci.io/repos/233508941/shield?branch=sanctum&style=flat)
+[![License](https://img.shields.io/packagist/l/jasonc/api.svg)](LICENSE)
+[![Development Version](https://img.shields.io/packagist/vpre/jasonc/api.svg)](https://packagist.org/packages/jasonc/api)
+[![Monthly Installs](https://img.shields.io/packagist/dt/jasonc/api.svg)](https://packagist.org/packages/jasonc/api)
+![PHP](https://img.shields.io/packagist/php-v/jasonc/api.svg)
+![laravel](https://img.shields.io/badge/Laravel-7.0+-ef3b2d.svg)
+
 >快速构建laravel api服务
+
 ## 1.安装
 ```shell script
 $ composer require jasonc/api
