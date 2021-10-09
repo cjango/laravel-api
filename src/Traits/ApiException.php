@@ -14,10 +14,10 @@ trait ApiException
      * @Author: <C.Jason>
      * @Date  : 2020/11/10 11:21 上午
      *
-     * @param                                            $request
-     * @param \Illuminate\Validation\ValidationException $exception
+     * @param  $request
+     * @param  ValidationException  $exception
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function invalidJson($request, ValidationException $exception): JsonResponse
     {
@@ -36,9 +36,9 @@ trait ApiException
      * @Date  : 2020/11/10 11:21 上午
      *
      * @param            $request
-     * @param \Throwable $e
+     * @param  Throwable  $e
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function prepareJsonResponse($request, Throwable $e): JsonResponse
     {
@@ -64,7 +64,7 @@ trait ApiException
      * @Author: <C.Jason>
      * @Date  : 2020/6/17 2:11 下午
      *
-     * @param \Throwable $e
+     * @param  Throwable  $e
      *
      * @return int
      */

@@ -8,7 +8,7 @@ use Jason\Api\Exceptions\UnauthorizedException;
 class Authorized extends Authenticate
 {
     /**
-     * @throws \Jason\Api\Exceptions\UnauthorizedException
+     * @throws UnauthorizedException
      */
     protected function authenticate($request, array $guards)
     {

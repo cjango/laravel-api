@@ -15,7 +15,3 @@ disabled:
   - "unalign_equals"
   - "no_blank_lines_after_class_opening"
   - "no_blank_lines_after_phpdoc"
-
-finder:
-  exclude:
-    - "GPBMetadata"

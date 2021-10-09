@@ -48,11 +48,11 @@ class ApiServiceProvider extends ServiceProvider
 
         if (file_exists($routes = $this->getRouteFile())) {
             Route::as(config('api.route.as'))
-                 ->domain(config('api.route.domain'))
-                 ->middleware(config('api.route.middleware'))
-                 ->namespace(config('api.route.namespace'))
-                 ->prefix(config('api.route.prefix'))
-                 ->group($routes);
+                ->domain(config('api.route.domain'))
+                ->middleware(config('api.route.middleware'))
+                ->namespace(config('api.route.namespace'))
+                ->prefix(config('api.route.prefix'))
+                ->group($routes);
         }
     }
 
@@ -68,7 +68,7 @@ class ApiServiceProvider extends ServiceProvider
 
         $this->registerRouteMiddlewares();
 
-        $this->app->singleton('api', fn (Application $app) => new Factory($app));
+        $this->app->singleton('api', fn(Application $app) => new Factory($app));
     }
 
     /**

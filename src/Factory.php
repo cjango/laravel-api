@@ -2,6 +2,7 @@
 
 namespace Jason\Api;
 
+use Exception;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\User;
 
@@ -20,12 +21,11 @@ class Factory
      * @Date   : 2021/8/26 11:26 上午
      * @Author : <Jason.C>
      *
-     * @param array $credentials
-     * @param array $scopes
-     *
-     * @throws \Exception
+     * @param  array  $credentials
+     * @param  array  $scopes
      *
      * @return string
+     * @throws Exception
      */
     public function attempt(array $credentials, array $scopes = []): string
     {
@@ -34,7 +34,7 @@ class Factory
 
             return $this->app['auth']->user()->createToken($tokenName, $scopes)->plainTextToken;
         } else {
-            throw new \Exception('Authorize failed, wrong credentials');
+            throw new Exception('Authorize failed, wrong credentials');
         }
     }
 
@@ -44,8 +44,8 @@ class Factory
      * @Date   : 2021/8/26 11:41 上午
      * @Author : <Jason.C>
      *
-     * @param \Illuminate\Foundation\Auth\User $user
-     * @param array                            $scopes
+     * @param  User  $user
+     * @param  array  $scopes
      *
      * @return string
      */

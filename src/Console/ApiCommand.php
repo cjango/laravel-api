@@ -62,7 +62,7 @@ class ApiCommand extends Command
     protected function createBaseController()
     {
         $baseController = $this->directory.'/Controllers/Controller.php';
-        $contents = $this->getStub('Controller');
+        $contents       = $this->getStub('Controller');
 
         $this->laravel['files']->put(
             $baseController,
@@ -80,7 +80,7 @@ class ApiCommand extends Command
     protected function createIndexController()
     {
         $indexController = $this->directory.'/Controllers/IndexController.php';
-        $contents = $this->getStub('IndexController');
+        $contents        = $this->getStub('IndexController');
 
         $this->laravel['files']->put(
             $indexController,
@@ -140,7 +140,7 @@ class ApiCommand extends Command
      * @Date   : 2021/8/25 4:37 下午
      * @Author : <Jason.C>
      *
-     * @param string $path
+     * @param  string  $path
      */
     protected function makeDir(string $path = '')
     {
