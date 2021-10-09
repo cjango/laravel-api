@@ -7,7 +7,6 @@ use Jason\Api\Exceptions\UnauthorizedException;
 
 class Authorized extends Authenticate
 {
-
     /**
      * @throws \Jason\Api\Exceptions\UnauthorizedException
      */
@@ -19,5 +18,4 @@ class Authorized extends Authenticate
 
         throw new UnauthorizedException();
     }
-
 }
