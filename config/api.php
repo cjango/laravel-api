@@ -2,11 +2,11 @@
 
 return [
     /**
-     * 重新登录后，自动作废以前的token
+     * 重新登录后，自动作废以前的token.
      */
     'token_auto_revoke'   => env('TOKEN_AUTO_REVOKE', true),
     /**
-     * token的名称
+     * token的名称.
      */
     'passport_token_name' => env('PASSPORT_TOKEN_NAME', ''),
 
@@ -16,7 +16,7 @@ return [
          */
         'as'               => 'api.',
         /**
-         * 可配置 API 独立域名
+         * 可配置 API 独立域名.
          */
         'domain'           => env('API_ROUTE_DOMAIN', ''),
         /**
@@ -24,25 +24,25 @@ return [
          */
         'prefix'           => env('API_ROUTE_PREFIX', 'api'),
         /**
-         * API 控制器命名空间
+         * API 控制器命名空间.
          */
         'namespace'        => 'App\\Api\\Controllers',
         /**
-         * 中间件
+         * 中间件.
          */
         'middleware'       => ['api', 'api.accept'],
         /**
-         * 身份认证的中间件
+         * 身份认证的中间件.
          */
         'middleware_auth'  => ['api', 'api.accept', 'token.auth'],
         /**
-         * 获取token，获取不到也不报错的中间件
+         * 获取token，获取不到也不报错的中间件.
          */
         'middleware_guess' => ['api', 'api.accept', 'token.guess'],
     ],
 
     /**
-     * 接口目录
+     * 接口目录.
      */
     'directory' => app_path('Api'),
 ];

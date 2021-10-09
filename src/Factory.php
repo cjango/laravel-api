@@ -8,7 +8,6 @@ use Jason\Api\Events\Authenticated;
 
 class Factory
 {
-
     protected Application $app;
 
     public function __construct(Application $app)
@@ -18,11 +17,14 @@ class Factory
 
     /**
      * Notes   : 用户认证
+     *
      * @Date   : 2021/8/26 11:26 上午
      * @Author : <Jason.C>
+     *
      * @param  array  $credentials
      * @param  array  $scopes
      * @return string
+     *
      * @throws \Exception
      */
     public function attempt(array $credentials, array $scopes = []): string
@@ -39,11 +41,13 @@ class Factory
     }
 
     /**
-     * Notes   : 登录一个用户
+     * Notes   : 登录一个用户.
+     *
      * @Date   : 2021/8/26 11:41 上午
      * @Author : <Jason.C>
+     *
      * @param  \Illuminate\Foundation\Auth\User  $user
-     * @param  array                             $scopes
+     * @param  array  $scopes
      * @return string
      */
     public function login(User $user, array $scopes = []): string
@@ -57,9 +61,11 @@ class Factory
     }
 
     /**
-     * Notes   : 当前登录用户
+     * Notes   : 当前登录用户.
+     *
      * @Date   : 2021/7/21 5:30 下午
      * @Author : <Jason.C>
+     *
      * @return User|null
      */
     public function user(): ?User
@@ -68,9 +74,11 @@ class Factory
     }
 
     /**
-     * Notes   : 当前登录用户ID
+     * Notes   : 当前登录用户ID.
+     *
      * @Date   : 2021/7/21 5:31 下午
      * @Author : <Jason.C>
+     *
      * @return int|null
      */
     public function userId(): ?int
@@ -79,9 +87,11 @@ class Factory
     }
 
     /**
-     * Notes   : 检测用户是否已登录
+     * Notes   : 检测用户是否已登录.
+     *
      * @Date   : 2021/8/9 4:01 下午
      * @Author : <Jason.C>
+     *
      * @return bool
      */
     public function check(): bool
@@ -90,14 +100,15 @@ class Factory
     }
 
     /**
-     * Notes   : 检测是否游客登录
+     * Notes   : 检测是否游客登录.
+     *
      * @Date   : 2021/8/9 4:02 下午
      * @Author : <Jason.C>
+     *
      * @return bool
      */
     public function guest(): bool
     {
         return $this->app['auth']->guest();
     }
-
 }

@@ -6,11 +6,11 @@ use Illuminate\Contracts\Auth\Authenticatable;
 
 class Authenticated
 {
-
     public Authenticatable $user;
 
     /**
      * Create a new event instance.
+     *
      * @param  \Illuminate\Contracts\Auth\Authenticatable  $user
      * @return void
      */
@@ -18,5 +18,4 @@ class Authenticated
     {
         $this->user = $user;
     }
-
 }

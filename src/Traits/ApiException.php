@@ -8,12 +8,13 @@ use Throwable;
 
 trait ApiException
 {
-
     /**
-     * Notes: 表单验证错误信息
+     * Notes: 表单验证错误信息.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/11/10 11:21 上午
-     * @param                                              $request
+     *
+     * @param  $request
      * @param  \Illuminate\Validation\ValidationException  $exception
      * @return \Illuminate\Http\JsonResponse
      */
@@ -28,10 +29,12 @@ trait ApiException
     }
 
     /**
-     * Notes: 统一错误信息格式
+     * Notes: 统一错误信息格式.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/11/10 11:21 上午
-     * @param              $request
+     *
+     * @param  $request
      * @param  \Throwable  $e
      * @return \Illuminate\Http\JsonResponse
      */
@@ -54,9 +57,11 @@ trait ApiException
     }
 
     /**
-     * Notes: 有些错误没有 getStatusCode 的问题
+     * Notes: 有些错误没有 getStatusCode 的问题.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/6/17 2:11 下午
+     *
      * @param  \Throwable  $e
      * @return int
      */
@@ -68,5 +73,4 @@ trait ApiException
             return $e->getCode();
         }
     }
-
 }
