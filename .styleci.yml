@@ -1,0 +1,21 @@
+risky: false
+
+version: 7.4
+
+preset: laravel
+
+tab-width: 4
+
+use-tabs: false
+
+#enabled:
+#  - "align_phpdoc"
+
+disabled:
+  - "unalign_equals"
+  - "no_blank_lines_after_class_opening"
+  - "no_blank_lines_after_phpdoc"
+
+finder:
+  exclude:
+    - "GPBMetadata"
