@@ -11,7 +11,8 @@ class ApiServiceProvider extends ServiceProvider
 {
 
     /**
-     * 命令操作
+     * 命令操作.
+     *
      * @var array
      */
     protected array $commands = [
@@ -19,7 +20,8 @@ class ApiServiceProvider extends ServiceProvider
     ];
 
     /**
-     * 路由中间件
+     * 路由中间件.
+     *
      * @var array
      */
     protected array $routeMiddleware = [
@@ -29,17 +31,18 @@ class ApiServiceProvider extends ServiceProvider
     ];
 
     /**
-     * Notes: 部署
+     * Notes: 部署.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:21 下午
      */
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../config' => config_path()], 'api-config');
+            $this->publishes([__DIR__.'/../config' => config_path()], 'api-config');
         }
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/api.php', 'api');
+        $this->mergeConfigFrom(__DIR__.'/../config/api.php', 'api');
 
         if (file_exists($bootstrap = $this->getBootstrapFile())) {
             require $bootstrap;
@@ -58,7 +61,8 @@ class ApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * Notes   : 注册监听器
+     * Notes   : 注册监听器.
+     *
      * @Date   : 2021/7/23 1:49 下午
      * @Author : <Jason.C>
      */
@@ -68,7 +72,8 @@ class ApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * Notes: 注册功能
+     * Notes: 注册功能.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:21 下午
      */
@@ -78,11 +83,12 @@ class ApiServiceProvider extends ServiceProvider
 
         $this->registerRouteMiddlewares();
 
-        $this->app->singleton('api', fn(Application $app) => new Factory($app));
+        $this->app->singleton('api', fn (Application $app) => new Factory($app));
     }
 
     /**
-     * Notes: 注册路由中间件
+     * Notes: 注册路由中间件.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:21 下午
      */
@@ -94,30 +100,33 @@ class ApiServiceProvider extends ServiceProvider
     }
 
     /**
-     * Notes: 获取路由文件
+     * Notes: 获取路由文件.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:21 下午
+     *
      * @return string
      */
     protected function getRouteFile(): string
     {
-        return ucfirst(config('api.directory')) . DIRECTORY_SEPARATOR . 'routes.php';
+        return ucfirst(config('api.directory')).DIRECTORY_SEPARATOR.'routes.php';
     }
 
     /**
-     * Notes: 加载部署文件
+     * Notes: 加载部署文件.
+     *
      * @Author: <C.Jason>
      * @Date  : 2020/1/14 5:21 下午
+     *
      * @return string
      */
     protected function getBootstrapFile(): string
     {
-        return ucfirst(config('api.directory')) . DIRECTORY_SEPARATOR . 'bootstrap.php';
+        return ucfirst(config('api.directory')).DIRECTORY_SEPARATOR.'bootstrap.php';
     }
 
     public function provides(): array
     {
         return ['api'];
     }
-
 }

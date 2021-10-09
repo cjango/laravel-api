@@ -6,8 +6,8 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Api
- * @package Jason
+ * Class Api.
+ *
  * @method static string attempt(array $credentials, array $scopes = [])
  * @method static string login(User $user, array $scopes = [])
  * @method static int userId()
@@ -17,10 +17,8 @@ use Illuminate\Support\Facades\Facade;
  */
 class Api extends Facade
 {
-
     protected static function getFacadeAccessor(): string
     {
         return 'api';
     }
-
 }
