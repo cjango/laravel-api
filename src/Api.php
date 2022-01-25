@@ -2,12 +2,13 @@
 
 namespace Jason\Api;
 
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Facade;
+use Modules\User\Models\User;
 
 /**
- * Class Api.
+ * Class Api
  *
+ * @package Jason
  * @method static string attempt(array $credentials, array $scopes = [])
  * @method static string login(User $user, array $scopes = [])
  * @method static int userId()
