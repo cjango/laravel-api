@@ -34,7 +34,7 @@ class ApiCommand extends Command
         $this->directory = config('api.directory');
 
         if (is_dir($this->directory)) {
-            $this->line("<error>{$this->directory} directory already exists !</error> ");
+            $this->line("<error>$this->directory directory already exists !</error> ");
 
             return;
         }
@@ -146,6 +146,6 @@ class ApiCommand extends Command
      */
     protected function makeDir(string $path = '')
     {
-        $this->laravel['files']->makeDirectory("{$this->directory}/$path", 0755, true, true);
+        $this->laravel['files']->makeDirectory("$this->directory/$path", 0755, true, true);
     }
 }

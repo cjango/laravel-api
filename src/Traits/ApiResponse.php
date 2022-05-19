@@ -23,7 +23,7 @@ trait ApiResponse
      * @Date  : 2020/1/14 5:16 下午
      *
      * @param  int  $statusCode
-     * @return \Jason\Api\Traits\ApiResponse
+     * @return ApiResponse
      */
     protected function setStatusCode(int $statusCode): self
     {
@@ -40,7 +40,7 @@ trait ApiResponse
      *
      * @param  mixed  $data
      * @param  string  $status
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function success($data = [], string $status = 'SUCCESS'): JsonResponse
     {
@@ -55,7 +55,7 @@ trait ApiResponse
      *
      * @param  string  $message
      * @param  string  $status
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function message(string $message = '', string $status = 'SUCCESS'): JsonResponse
     {
@@ -73,13 +73,13 @@ trait ApiResponse
      * @param  string  $message
      * @param  int  $code
      * @param  string  $status
-     * @return mixed
+     * @return JsonResponse
      */
     public function failed(
         string $message = '',
         int $code = FoundationResponse::HTTP_BAD_REQUEST,
         string $status = 'ERROR'
-    ) {
+    ): JsonResponse {
         return $this->setStatusCode($code)->message($message, $status);
     }
 
@@ -92,7 +92,7 @@ trait ApiResponse
      * @param  string  $status
      * @param  array  $data
      * @param  int|null  $code
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function status(string $status, array $data, int $code = null): JsonResponse
     {
@@ -118,7 +118,7 @@ trait ApiResponse
      *
      * @param  mixed  $data
      * @param  array  $header
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     protected function respond($data, array $header = []): JsonResponse
     {
