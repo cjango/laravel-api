@@ -112,4 +112,18 @@ class Factory
     {
         return $this->app['auth']->guest();
     }
+
+    /**
+     * Notes   : 退出登录.
+     *
+     * @Date   : 2022/9/20 14:02
+     * @Author : <Jason.C>
+     *
+     * @return bool
+     */
+    public function logout(): bool
+    {
+        event(new Authenticated($this->app['auth']->user()));
+        return true;
+    }
 }
