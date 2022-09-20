@@ -40,10 +40,10 @@ class ApiCommand extends Command
         }
 
         $this->makeDir('/');
-        $this->line('<info>Api directory was created:</info> '.str_replace(base_path(), '', $this->directory));
+        $this->line('<info>Api directory was created:</info> ' . str_replace(base_path(), '', $this->directory));
 
         $this->makeDir('Resources');
-        $this->line('<info>Resources directory was created:</info> '.str_replace(base_path(), '', $this->directory));
+        $this->line('<info>Resources directory was created:</info> ' . str_replace(base_path(), '', $this->directory));
 
         $this->makeDir('Controllers');
 
@@ -64,14 +64,14 @@ class ApiCommand extends Command
      */
     protected function createBaseController()
     {
-        $baseController = $this->directory.'/Controllers/Controller.php';
+        $baseController = $this->directory . '/Controllers/Controller.php';
         $contents       = $this->getStub('Controller');
 
         $this->laravel['files']->put(
             $baseController,
             str_replace('DummyNamespace', config('api.route.namespace'), $contents)
         );
-        $this->line('<info>BaseController file was created:</info> '.str_replace(base_path(), '', $baseController));
+        $this->line('<info>BaseController file was created:</info> ' . str_replace(base_path(), '', $baseController));
     }
 
     /**
@@ -82,14 +82,14 @@ class ApiCommand extends Command
      */
     protected function createIndexController()
     {
-        $indexController = $this->directory.'/Controllers/IndexController.php';
+        $indexController = $this->directory . '/Controllers/IndexController.php';
         $contents        = $this->getStub('IndexController');
 
         $this->laravel['files']->put(
             $indexController,
             str_replace('DummyNamespace', config('api.route.namespace'), $contents)
         );
-        $this->line('<info>IndexController file was created:</info> '.str_replace(base_path(), '', $indexController));
+        $this->line('<info>IndexController file was created:</info> ' . str_replace(base_path(), '', $indexController));
     }
 
     /**
@@ -100,11 +100,11 @@ class ApiCommand extends Command
      */
     protected function createBootstrapFile()
     {
-        $file = $this->directory.'/bootstrap.php';
+        $file = $this->directory . '/bootstrap.php';
 
         $contents = $this->getStub('bootstrap');
         $this->laravel['files']->put($file, $contents);
-        $this->line('<info>Bootstrap file was created:</info> '.str_replace(base_path(), '', $file));
+        $this->line('<info>Bootstrap file was created:</info> ' . str_replace(base_path(), '', $file));
     }
 
     /**
@@ -115,11 +115,11 @@ class ApiCommand extends Command
      */
     protected function createRoutesFile()
     {
-        $file = $this->directory.'/routes.php';
+        $file = $this->directory . '/routes.php';
 
         $contents = $this->getStub('routes');
         $this->laravel['files']->put($file, $contents);
-        $this->line('<info>Routes file was created:</info> '.str_replace(base_path(), '', $file));
+        $this->line('<info>Routes file was created:</info> ' . str_replace(base_path(), '', $file));
     }
 
     /**
@@ -133,7 +133,7 @@ class ApiCommand extends Command
      */
     protected function getStub($name): string
     {
-        return $this->laravel['files']->get(__DIR__."/stubs/$name.stub");
+        return $this->laravel['files']->get(__DIR__ . "/stubs/$name.stub");
     }
 
     /**

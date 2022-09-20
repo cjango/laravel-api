@@ -39,10 +39,10 @@ class ApiServiceProvider extends ServiceProvider
     public function boot()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__.'/../config' => config_path()], 'api-config');
+            $this->publishes([__DIR__ . '/../config' => config_path()], 'api-config');
         }
 
-        $this->mergeConfigFrom(__DIR__.'/../config/api.php', 'api');
+        $this->mergeConfigFrom(__DIR__ . '/../config/api.php', 'api');
 
         if (file_exists($bootstrap = $this->getBootstrapFile())) {
             require $bootstrap;
@@ -52,11 +52,11 @@ class ApiServiceProvider extends ServiceProvider
 
         if (file_exists($routes = $this->getRouteFile())) {
             Route::as(config('api.route.as'))
-                 ->domain(config('api.route.domain'))
-                 ->middleware(config('api.route.middleware'))
-                 ->namespace(config('api.route.namespace'))
-                 ->prefix(config('api.route.prefix'))
-                 ->group($routes);
+                ->domain(config('api.route.domain'))
+                ->middleware(config('api.route.middleware'))
+                ->namespace(config('api.route.namespace'))
+                ->prefix(config('api.route.prefix'))
+                ->group($routes);
         }
     }
 
@@ -109,7 +109,7 @@ class ApiServiceProvider extends ServiceProvider
      */
     protected function getRouteFile(): string
     {
-        return ucfirst(config('api.directory')).DIRECTORY_SEPARATOR.'routes.php';
+        return ucfirst(config('api.directory')) . DIRECTORY_SEPARATOR . 'routes.php';
     }
 
     /**
@@ -122,7 +122,7 @@ class ApiServiceProvider extends ServiceProvider
      */
     protected function getBootstrapFile(): string
     {
-        return ucfirst(config('api.directory')).DIRECTORY_SEPARATOR.'bootstrap.php';
+        return ucfirst(config('api.directory')) . DIRECTORY_SEPARATOR . 'bootstrap.php';
     }
 
     public function provides(): array

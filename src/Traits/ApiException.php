@@ -68,7 +68,7 @@ trait ApiException
     protected function getErrorCode(Throwable $e): int
     {
         try {
-            return $e->getStatusCode();
+            return (int) $e->getStatusCode();
         } catch (Throwable $exception) {
             return $e->getCode();
         }
