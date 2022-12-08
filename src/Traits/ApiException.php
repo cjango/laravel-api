@@ -65,7 +65,7 @@ trait ApiException
      * @param  Throwable  $e
      * @return mixed
      */
-    protected function getErrorCode(Throwable $e): mixed
+    protected function getErrorCode(Throwable $e)
     {
         try {
             return (int) $e->getStatusCode();
