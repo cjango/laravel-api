@@ -63,9 +63,9 @@ trait ApiException
      * @Date  : 2020/6/17 2:11 下午
      *
      * @param  Throwable  $e
-     * @return int
+     * @return mixed
      */
-    protected function getErrorCode(Throwable $e): int
+    protected function getErrorCode(Throwable $e): mixed
     {
         try {
             return (int) $e->getStatusCode();
