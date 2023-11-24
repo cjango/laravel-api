@@ -2,9 +2,9 @@
 
 namespace Jason\Api\Traits;
 
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
-use Throwable;
 
 trait ApiException
 {
@@ -38,7 +38,7 @@ trait ApiException
      * @param  Throwable  $e
      * @return JsonResponse
      */
-    protected function prepareJsonResponse($request, Throwable $e): JsonResponse
+    protected function prepareJsonResponse($request, Exception $e): JsonResponse
     {
         $message = [
             'status'      => 'EXCEPTION',
@@ -65,11 +65,11 @@ trait ApiException
      * @param  Throwable  $e
      * @return int
      */
-    protected function getErrorCode(Throwable $e): int
+    protected function getErrorCode(Exception $e): int
     {
         try {
             return $e->getStatusCode();
-        } catch (Throwable $exception) {
+        } catch (Exception $exception) {
             return $e->getCode();
         }
     }
